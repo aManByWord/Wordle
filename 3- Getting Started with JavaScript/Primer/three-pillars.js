@@ -1,3 +1,5 @@
+let BOOK_API = "https://some.url/api";
+
 class Bookshelf {
     constructor() {
         this.favoriteBooks = [];
@@ -16,23 +18,7 @@ class Bookshelf {
             console.log(book);
         });
     }
-
 }
-
-function loadBooks(addBooks) {
-    // TODO: call fakeAjax( .. );
-    fakeAjax(BOOK_API, function getingTheBooks(booksArray) {
-        for (let book of booksArray) {
-            addBooks.addFavoriteBook(book);
-        }
-        addBooks.printFavoriteBooks();
-    });
-}
-
-var BOOK_API = "https://some.url/api";
-
-
-// ***********************
 
 // NOTE: don't modify this function at all
 function fakeAjax(url, cb) {
@@ -47,6 +33,15 @@ function fakeAjax(url, cb) {
     }, 500);
 }
 
+function loadBooks(addBooks) {
+    // TODO: call fakeAjax( .. );
+    fakeAjax(BOOK_API, function getingTheBooks(booksArray) {
+        for (let book of booksArray) {
+            addBooks.addFavoriteBook(book);
+        }
+        addBooks.printFavoriteBooks();
+    });
+}
+
 let newBook = new Bookshelf();
 loadBooks(newBook);
-
